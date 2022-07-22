@@ -9,9 +9,8 @@ COPY . .
 #RUN flutter config --enable-web
 RUN flutter build web
 
-FROM nginx
+FROM python
 
-COPY --from=build /app/build/web /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/build/web .
 
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
+CMD ["python", "-m", "http.server"]
