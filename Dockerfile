@@ -2,7 +2,7 @@ FROM fischerscode/flutter-sudo AS build
 
 COPY . .
 
-RUN mkdir output
+RUN mkdir /output
 
 #RUN flutter doctor
 #RUN flutter config --enable-web
