@@ -13,4 +13,4 @@ FROM python
 
 COPY --from=build /app/build/web .
 
-CMD ["python", "-m", "http.server"]
+CMD python -m http.server $PORT
