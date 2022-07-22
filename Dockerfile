@@ -1,6 +1,7 @@
-FROM fischerscode/flutter AS build
+FROM fischerscode/flutter-sudo AS build
 
 COPY . .
+RUN flutter doctor
 RUN flutter config --enable-web
 RUN flutter pub get
 RUN flutter build web
