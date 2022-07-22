@@ -18,7 +18,8 @@ jobs:
       - run: |
           flutter pub get
           flutter build web
-      - uses: canastro/copy-file-action@master
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          source: "build/web"
-          target: "build/web"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ deploy }}
