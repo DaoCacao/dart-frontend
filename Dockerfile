@@ -6,7 +6,6 @@ RUN mkdir output
 
 #RUN flutter doctor
 #RUN flutter config --enable-web
-RUN 
 RUN flutter pub get
 RUN flutter build web output
 
