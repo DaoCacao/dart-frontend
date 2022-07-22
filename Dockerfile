@@ -2,13 +2,15 @@ FROM fischerscode/flutter-sudo AS build
 
 COPY . .
 
+RUN mkdir output
+
 #RUN flutter doctor
 #RUN flutter config --enable-web
 RUN flutter pub get
-RUN flutter build web
+RUN flutter build web /output
 
 FROM python
 
-COPY --from=build /build/web /
+COPY --from=build /output /
 
 CMD ["python", "-m", "http.server", "$PORT"]
