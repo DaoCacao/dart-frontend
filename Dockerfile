@@ -1,4 +1,4 @@
-FROM fischerscode/flutter AS build
+FROM fischerscode/flutter-sudo AS build
 
 WORKDIR /app
 
