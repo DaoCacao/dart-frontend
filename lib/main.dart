@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
@@ -8,10 +9,9 @@ void main() {
 }
 
 class Service {
-  final _host = "http://0.0.0.0:8080";
+  final _host = kReleaseMode ? "http://web.daocacao.me" : "http://0.0.0.0:8080";
 
   Future<String> signUp(String username, String password) async {
-    print('signUp');
     final response = await post(
       Uri.parse("$_host/sign_up"),
       body: jsonEncode({
@@ -19,9 +19,8 @@ class Service {
         "password": password,
       }),
     );
-    print('code ${response.statusCode}');
-    print('body ${response.body}');
-    return jsonDecode(response.body)["token"];
+    final body = jsonDecode(response.body) as Map;
+    return body["token"];
   }
 }
 
