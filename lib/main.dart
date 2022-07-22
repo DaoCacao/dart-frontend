@@ -22,6 +22,10 @@ class Service {
     final body = jsonDecode(response.body) as Map;
     return body["token"];
   }
+
+  Future<String> signIn(String username, String password) async {
+    throw Exception("Not Implemented Yet");
+  }
 }
 
 class App extends StatelessWidget {
